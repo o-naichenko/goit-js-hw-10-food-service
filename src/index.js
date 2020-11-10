@@ -1,14 +1,20 @@
-import template from "./templates.hbs";
+import menuCardTpl from "./templates.hbs";
 import "./styles.css";
+import menuCardsInfo from "./menu.json";
 
-const checkBoxRef = document.getElementById("theme-switch-toggle");
+// console.log(menuCardsInfo);
+
 const bodyRef = document.body;
-console.log(bodyRef);
+const checkBoxRef = document.getElementById("theme-switch-toggle");
+const menuMarkup = menuCardTpl({ menuCardsInfo });
+const menuRef = document.querySelector(".js-menu");
 
 const Theme = {
   LIGHT: "light-theme",
   DARK: "dark-theme",
 };
+
+menuRef.innerHTML = menuMarkup;
 
 document.addEventListener("DOMContentLoaded", onDomContentLoaded);
 checkBoxRef.addEventListener("change", onCheckBoxChange);
